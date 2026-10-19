@@ -57,6 +57,17 @@ export default class ServiceApuestas {
         })
     }
 
+    deleteApuesta(id) {
+        return new Promise(function(resolve, reject) {
+            let url = Global.urlApiApuestas
+            let request = "api/apuestas/" + id
+            axios.delete(url + request).then(response => {
+                console.log("Apuesta eliminada: " + id)
+                resolve()
+            })
+        })
+    }
+
     async getJugadoresNombre(nombre) {
         let url = Global.urlApiApuestas
         let request = "api/jugadores/findjugadores/" + nombre

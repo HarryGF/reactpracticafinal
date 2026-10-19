@@ -17,7 +17,15 @@ export default class ApuestasComponent extends Component {
     }
 
     componentDidMount = () => {
-        this.loadApuestas()
+        if(this.props.estado == 'true') {
+            this.loadApuestas()
+        }
+    }
+
+    componentDidUpdate = (oldProps) => {
+        if(oldProps.estado != this.props.estado) {
+            this.loadApuestas()
+        }
     }
 
     render() {
@@ -34,6 +42,7 @@ export default class ApuestasComponent extends Component {
                             <th>USUARIO</th>
                             <th>RESULTADO</th>
                             <th>FECHA</th>
+                            <th></th>
                         </tr>
                     </thead>
                     <tbody>
@@ -43,6 +52,11 @@ export default class ApuestasComponent extends Component {
                                     <td>{apuesta.usuario}</td>
                                     <td>{apuesta.resultado}</td>
                                     <td>{apuesta.fecha}</td>
+                                    <td><NavLink className='btn btn-danger'
+                                        to={'/borrarapuesta/' + apuesta.idApuesta}>
+                                            Borrar
+                                        </NavLink>
+                                    </td>
                                 </tr>)
                             })
                         }

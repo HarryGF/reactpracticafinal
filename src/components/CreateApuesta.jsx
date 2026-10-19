@@ -38,7 +38,7 @@ export default class CreateApuesta extends Component {
             <div>
                 {
                     this.state.status == true && 
-                        <Navigate to='/apuestas'/>
+                        <Navigate to={'/apuestas/' + true}/>
                 }
                 {
                     this.state.mensaje &&
